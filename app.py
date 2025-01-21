@@ -1,4 +1,7 @@
+import os
 from modelos.restaurante import Restaurante
+from modelos.cardapio.pratos import Pratos
+from modelos.cardapio.bebidas import Bebidas
 
 # Criando instâncias da classe Restaurante e adicionando avaliações
 restaurante_labu = Restaurante('podrão do Labu', 'Podrões')
@@ -11,18 +14,18 @@ restaurante_candinho.receber_avaliacao('Greg', 5)
 restaurante_novais = Restaurante('restaurante do Novais', 'Comida Caseira')
 restaurante_novais.receber_avaliacao('Ana', 3)
 
+# Criando instâncias da classe pratos e bebidas
+prato1 = Pratos('Podrão', 10.00, 'Podrão com carne, queijo, alface e tomate')
+bebida1 = Bebidas('Suco de Laranja', 5.00, 'Suco de laranja natural 300ml')
+restaurante_labu.adicionar_item_no_cardapio(prato1)
+restaurante_labu.adicionar_item_no_cardapio(bebida1)
+
 def main():
-    """
-    Função principal que lista os restaurantes cadastrados e exibe as informações do restaurante 'podrão do Labu'.
-
-    Esta função chama o método de classe `listar_restaurantes` para exibir todos os restaurantes 
-    registrados e, em seguida, imprime os detalhes do restaurante específico `restaurante_labu`.
-
-    Returns:
-        None
-    """
-    Restaurante.listar_restaurantes()
-    print(f'\n{restaurante_labu}')
+    os.system('cls')
+    # Restaurante.listar_restaurantes()
+    # print(f'\n{restaurante_labu}')
+    print(f'\n{prato1}')
+    print(f'\n{bebida1}')
 
 if __name__ == '__main__':
     """

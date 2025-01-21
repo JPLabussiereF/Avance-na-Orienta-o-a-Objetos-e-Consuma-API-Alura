@@ -1,49 +1,15 @@
 from modelos.avaliacao import Avaliacao
-
+from modelos.cardapio.item_cardapio import ItemCardapio
 class Restaurante:
-    """
-    Classe para representar um restaurante.
-
-    Atributos:
-        nome (str): Nome do restaurante.
-        categoria (str): Categoria do restaurante.
-        status (bool): Status de aberto ou fechado.
-        avaliacoes (list): Lista de avaliações recebidas pelo restaurante.
-
-    Métodos:
-        __init__(nome, categoria):
-            Inicializa um novo restaurante com nome e categoria especificados.
-        
-        __str__():
-            Retorna uma representação em string do restaurante com nome, categoria, status e média de avaliações.
-
-        listar_restaurantes():
-            Lista todos os restaurantes cadastrados.
-
-        alternar_status():
-            Alterna o status do restaurante entre aberto e fechado.
-
-        receber_avaliacao(cliente, nota):
-            Recebe uma avaliação de um cliente com uma nota específica e a armazena.
-
-        media_avaliacoes():
-            Calcula e retorna a média das avaliações recebidas pelo restaurante.
-    """
 
     restaurantes = []
 
     def __init__(self, nome, categoria):
-        """
-        Inicializa um restaurante com o nome e categoria especificados.
-
-        Args:
-            nome (str): Nome do restaurante.
-            categoria (str): Categoria do restaurante.
-        """
         self._nome = nome.title() # Método title() deixa a primeira letra de cada palavra maiúscula
         self._categoria = categoria.upper() # Método upper() deixa todas as letras maiúsculas
         self._status = False
         self._avaliacao = []
+        self._cardapio = []
         Restaurante.restaurantes.append(self)
 
     @property
@@ -130,3 +96,11 @@ class Restaurante:
         media_das_notas = round(soma_das_notas / quantidade_de_avaliacoes, 1)
         return f'{'★' * int(media_das_notas)} {media_das_notas}'
 
+    def adicionar_item_no_cardapio(self,item):
+        if isinstance(item, ItemCardapio):
+            self._cardapio.append(item)
+    # def adicionar_bebida_no_cardapio(self, bebida):
+    #     self._cardapio.append(bebida)
+
+    # def adicionar_prato_no_cardapio(self, prato):
+    #     self._cardapio.append(prato)
