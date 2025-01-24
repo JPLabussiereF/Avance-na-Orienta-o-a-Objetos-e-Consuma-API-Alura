@@ -7,4 +7,7 @@ class Bebidas(ItemCardapio):
 
     def __str__(self):
         return f'{self.nome}({self.descricao}) - R$ {self.preco:.2f}\n'
+    
+    def aplicar_desconto(self):
+        self._preco -= (self._preco * 0.05)
         
